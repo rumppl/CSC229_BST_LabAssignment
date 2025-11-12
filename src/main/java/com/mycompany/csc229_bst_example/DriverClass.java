@@ -12,6 +12,7 @@ public class DriverClass {
     public static void main(String a[]) {
  
         BinarySearchTree bst = new BinarySearchTree();
+        System.out.println("Binary Search Tree:");
         bst.insert(8);
         bst.insert(10);
         bst.insert(14);
@@ -24,7 +25,10 @@ public class DriverClass {
         System.out.println("\n-------------------");
         System.out.println("In Order Traversal");
         bst.inOrderTraversal();
+        System.out.println("\n-------------------");
+        System.out.println("Pre-Order Traversal");
+        bst.preOrderTraversal();
         
-        bst.print();
+        //bst.print();
     }
 }
