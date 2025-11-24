@@ -56,8 +56,6 @@ public class BinarySearchTree {
 
     private void doInOrder(BstNode root) {
 
-        // ToDo 1: complete InOrder Traversal
-
         if(root == null){ // if the tree is empty return and break execution
             return;
         }
@@ -67,34 +65,100 @@ public class BinarySearchTree {
     }
         public void preOrderTraversal() {
         doPreOrder(this.root);
-        // ToDo 2: complete the pre-order travesal . 
     }
 
     private void doPreOrder(BstNode root){
         if(root == null){ // if the tree is empty return and break execution
             return;
         }
-        System.out.println(root.getData());
-        doInOrder(root.getLeft());
-        doInOrder(root.getRight());
+        System.out.println(root.getData()); // get current node
+        doInOrder(root.getLeft()); // left sub
+        doInOrder(root.getRight()); // right sub
     }
 
-    /*public Integer findHeight() {
+    public void findHeight() {
 
-        // ToDo 3: Find the height of a tree
+        System.out.println(doHeight(this.root));
+    }
+
+    private Integer doHeight(BstNode root){
+        if(root == null){
+            return -1; // invalid size
+        }
+
+        //System.out.println(root.getData()); // DEBUG: read current node
+        int rightCount = doHeight(root.getRight()); // compute right by traversal
+        int leftCount = doHeight(root.getLeft()); // compute left by traversal
+
+        if (leftCount > rightCount){
+            return leftCount+1;
+        } else {
+            return rightCount+1;
+        }
     }
 
     
 
-    public int getDepth(BstNode node) {
-        //ToDo 4: complete getDepth of a node 
+    public void getDepth(int key) {
+
+        if(testNode(this.root, key) == 0){
+            System.out.println(searchNode(this.root, key));
+        } else {
+            System.out.println("Key not found!");
+        }
     }
-    
-   public void print() {
+
+    public int searchNode(BstNode root, int keyValue){ // similar to testNode but increments.
+                                                       // used in getDepth
+        if (root == null){
+            return -1; // invalid size
+        }
+
+        int nodeData = root.getData();
+
+        if(nodeData == keyValue){
+            return 0; // exists
+        }
+        if(nodeData < keyValue){
+            return searchNode(root.getRight(), keyValue) + 1;
+        } else {
+            return searchNode(root.getLeft(), keyValue) + 1;
+        }
+    }
+
+    public int testNode(BstNode root, int keyValue){
+        if (root == null){
+            return -1; // invalid size
+        }
+
+        int nodeData = root.getData();
+
+        if(nodeData == keyValue){
+            return 0; // exists
+        }
+        if(nodeData < keyValue){
+            return testNode(root.getRight(), keyValue);
+        } else {
+            return testNode(root.getLeft(), keyValue);
+        }
+    }
+
+   public void printBST(){
        System.out.println("\n==== BST Print ===== \n");
-        print("", root, false);
-        // ToDo 5: complete the print of the BST
+       System.out.println(print(" ", this.root));
+   }
+
+   public String print(String separator, BstNode root ) {
+       if(root == null){
+           return "";
+       }
+
+       System.out.print(root.getData() + separator); // get current node
+
+       print(" " ,root.getLeft()); // left sub
+       print(" " ,root.getRight()); // right sub
+       return "";
     }
 
-*/
+
 }

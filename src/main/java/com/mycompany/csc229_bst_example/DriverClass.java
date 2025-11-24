@@ -28,7 +28,12 @@ public class DriverClass {
         System.out.println("\n-------------------");
         System.out.println("Pre-Order Traversal");
         bst.preOrderTraversal();
-        
-        //bst.print();
+        System.out.println("\n-------------------");
+        System.out.println("BST Height");
+        bst.findHeight();
+        System.out.println("\n-------------------");
+        System.out.println("BST Node Depth");
+        bst.getDepth(14);
+        bst.printBST();
     }
 }
